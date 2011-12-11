@@ -18,6 +18,11 @@
         padding-top: 60px;
       }
       li {margin-bottom:5px; color: #404040}
+      .sharing-button{
+        display:inline;
+        margin:5px;
+        float:left;
+      }
     </style>
 
     <!-- Le fav and touch icons -->
@@ -47,8 +52,15 @@
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
         <h1>You're almost there...</h1>
-        <p>Check your inbox for the first 2 chapters.</p>
-        <a href="/">try again</a>
+        <p id="to-remove">Let your friends know that shit's getting serious.</p> 
+        
+        <p id="to-change">
+            <img src="http://hartleybrody.com/sandbox/red-arrow.jpg" style="float:left; margin-left:80px"/>
+            
+            <span style="position:relative; top:30px">
+                <a href="http://twitter.com/intent/tweet" class="twitter-share-button" data-lang="en" data-url="http://marketingforhackers.com/" data-text="Marketing for Hackers: The step-by-step guide to turn your weekend project into paying customers" data-count="vertical" data-size="large">Tweet</a>
+            </span>
+        </p>
       </div>
 
       <!-- sub calls to action -->
@@ -68,15 +80,33 @@
           </ul>
        </div>
         <div class="span-one-third">
-          <h2>Sign Up Today!</h2>
-          <p><strong>Sign up before December 31<sup>st</sup> to receive the first 2 chapter by email and get started today.</strong></p>
-          <p>The complete guide is coming in early 2012.</p>
-          <p>Join the thousands who have already gotten started.</p>
+          
        </div>
       </div>
 
       <footer>
         <p>&copy; Marketing for Hackers 2011</p>
+        
+        <!-- twitter web intents -->
+        <script type="text/javascript" charset="utf-8">
+                // First, load the widgets.js file asynchronously 
+          window.twttr = (function (d,s,id) {
+            var t, js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+            js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+            return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+          }(document, "script", "twitter-wjs"));
+         
+        // Wait for the asynchronous resources to load
+        twttr.ready(function (twttr) {
+            // Now bind our custom intent events
+            twttr.events.bind('click', function(){
+                document.getElementById('to-change').innerHTML= "Thanks for sharing! The first two chapters are in your inbox.";
+                document.getElementById('to-remove').innerHTML= "";
+            });
+        });
+        </script>
+        
       </footer>
 
     </div> <!-- /container -->
