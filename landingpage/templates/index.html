@@ -40,9 +40,10 @@
           <img src="http://hartleybrody.com/sandbox/red-arrow.jpg" style="float:left; margin-left:80px"/>
           <form action="/submit/"  method="post" style="display:block; margin:40px 0px 0px 260px">
             {% csrf_token %}
-            <input class="span6" id="email" name="email" type="email" placeholder="email address..." />
+            <input class="span5" id="email" name="email" type="email" placeholder="email address..." />
             <input type="hidden" name="referrer" value="{{ referrer }}" />
-            <input type="submit" class="btn primary" value="Go!">
+            <input type="submit" class="btn primary" value="Go!"><br />
+            <em style="opacity:0.4; font-size:0.85em;">You'll be emailed a link to view/download the .pdf</em>
           </form> 
         </p>
         
@@ -53,7 +54,7 @@
         <div class="span-one-third">
           <h2>Quick & Easy</h2>
           <p><strong>You have a life, and a job. It would be cool if this side project really takes off, but you're not sure if you want to sink a lot of time into it yet.</strong></p>
-          <p>That's totally cool. This guide is filled with quick and easy tasks that will get you going in only a few minutes a day.</p>
+          <p>That's totally cool. This guide is filled with quick and easy tasks that will get you started in only a few minutes a day.</p>
         </div>
         <div class="span-one-third">
           <h2>Learn How To:</h2>
