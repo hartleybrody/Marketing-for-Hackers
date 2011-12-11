@@ -84,7 +84,7 @@
         // Wait for the asynchronous resources to load
         twttr.ready(function (twttr) {
             // Now bind our custom intent events
-            twttr.events.bind('click', function(){
+            twttr.events.bind('tweet', function(){
                 document.getElementById('to-change').innerHTML= "Thanks for sharing! You're awesome.";
                 //document.getElementById('to-remove').innerHTML= "";
             });
