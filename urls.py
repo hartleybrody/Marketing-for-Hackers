@@ -9,3 +9,4 @@ urlpatterns = patterns('landingpage.views',
     url(r'^submit/', 'submit'),
     url(r'^thanks/', 'thanks'),
 )
+
