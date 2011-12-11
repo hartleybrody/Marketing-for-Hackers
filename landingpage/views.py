@@ -10,7 +10,7 @@ from marketingforhackers import settings
 def index(request):
     # try to figure out where they came from
     try:
-        referrer = request.META.HTTP_REFERER
+        referrer = request.META.get('HTTP_REFERER')
     except AttributeError:
         referrer = "direct"
         
