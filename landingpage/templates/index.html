@@ -29,19 +29,6 @@
 
   <body>
 
-    <!--<div class="topbar">
-      <div class="fill">
-        <div class="container">
-          <a class="brand" href="#">Project name</a>
-          <ul class="nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>-->
-
     <div class="container">
 
       <!-- Main hero unit for a primary marketing message or call to action -->
@@ -49,7 +36,8 @@
         <h1>Marketing for Hackers</h1>
         <p>The step-by-step guide to turn your weekend project into paying customers.</p>
         <p>
-          <img src="{{ STATIC_URL }}red-arrow.jpg" style="float:left; margin-left:80px"/>
+          <!--<img src="{{ STATIC_URL }}red-arrow.jpg" style="float:left; margin-left:80px"/>-->
+          <img src="http://hartleybrody.com/sandbox/red-arrow.jpg" style="float:left; margin-left:80px"/>
           <form action="/submit/"  method="post" style="display:block; margin:40px 0px 0px 260px">
             {% csrf_token %}
             <input class="span6" id="email" name="email" type="email" placeholder="email address..." />
