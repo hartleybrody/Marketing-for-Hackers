@@ -8,5 +8,6 @@ urlpatterns = patterns('landingpage.views',
     url(r'^$', 'index'),
     url(r'^submit/', 'submit'),
     url(r'^thanks/', 'thanks'),
+    url(r'^author/', 'author'),
 )
 

@@ -45,3 +45,16 @@ def submit(request):
 def thanks(request):
     return render_to_response("thanks.html")
     
+def author(request):
+    import hashlib, urllib
+    
+    #get gravatar URL, from: http://en.gravatar.com/site/implement/images/python/
+    email = "hartley.brody@gmail.com"
+    size = 150
+    gravatar_url = "http://www.gravatar.com/avatar/" + hashlib.md5(email.lower()).hexdigest() + "?"
+    gravatar_url += urllib.urlencode({'s':str(size)})
+
+    author_info = dict(thumbnail=gravatar_url)
+    
+    return render_to_response("author.html", author_info)
+    
