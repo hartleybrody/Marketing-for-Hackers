@@ -5,6 +5,7 @@
         table{
             width: 1000px;
             overflow: hidden;
+            font-size:0.8em;
         }
         th{ text-align: left; }
         .id{ width: 10px; }
@@ -41,7 +42,7 @@
                     {{lead.date_converted}}
                 </td>
                 <td class="referrer">
-                    {{lead.referrer}}
+                    <a href="{{lead.referrer}}" target="_blank">{{lead.referrer}}</a>
                 </td>
             </tr>
             {% endfor %}
