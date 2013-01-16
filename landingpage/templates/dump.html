@@ -5,9 +5,10 @@
         table{
             width: 100%;
         }
-        td{
-            min-width: 200px;
-        }
+        .id{ width: 10%; }
+        .email{ width: 25%; }
+        .date{ width: 25%; }
+        .referrer{ width: 40%; }
         </style>
     </head>
     <body>
@@ -28,16 +29,16 @@
             </tr>
             {% for lead in leads %}
             <tr>
-                <td>
+                <td class="id">
                     {{lead.id}}
                 </td>
-                <td>
+                <td class="email">
                     {{lead.email}}
                 </td>
-                <td>
+                <td class="date">
                     {{lead.date_converted}}
                 </td>
-                <td>
+                <td class="referrer">
                     {{lead.referrer}}
                 </td>
             </tr>
