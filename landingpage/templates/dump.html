@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>{{total}} leads</title>
+    </head>
+    <body>
+        <table>
+            <th>
+                <td>
+                    Number
+                </td>
+                <td>
+                    Email
+                </td>
+                <td>
+                    Date
+                </td>
+                <td>
+                    Referrer
+                </td>
+            </th>
+            {% for lead in leads %}
+            <tr>
+                <td>
+                    {{lead.id}}
+                </td>
+                <td>
+                    {{lead.email}}
+                </td>
+                <td>
+                    {{lead.date_converted}}
+                </td>
+                <td>
+                    {{lead.referrer}}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
+
