@@ -66,7 +66,7 @@ def view_leads(request):
     if not request.GET.get("pass") == settings.VIEW_LEADS_PASSWORD:
         return HttpResponse("those are private", status=403)
 
-    all_leads = Lead.objects.all().order_by('id')
+    all_leads = Lead.objects.order_by('id').reverse()
     total = len(all_leads)
 
     return render_to_response("dump.html", dict(leads=all_leads, total=total))
