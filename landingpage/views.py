@@ -37,7 +37,7 @@ def submit(request):
         mailsnake.listSubscribe(
             id=list_num,
             email_address=email,
-            marge_vars=dict(REFERRER=clean_referrer(referrer)),
+            marge_vars=dict(REFERRER=referrer),
             double_optin=False,
             send_welcome=True
         )
@@ -75,9 +75,3 @@ def view_leads(request):
         return HttpResponse(serializers.serialize("json", all_leads), content_type="application/json")
     else:
         return render_to_response("dump.html", dict(leads=all_leads, total=total))
-        
-def clean_referrer(url):
-    if "http://t.co/" in url:
-        return "http://www.twitter.com"
-    
-    return url.strip().split("?")[0]
