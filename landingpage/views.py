@@ -7,6 +7,7 @@ from marketingforhackers.landingpage.models import Lead
 from mailsnake import MailSnake
 from marketingforhackers import settings
 
+import json
 
 def index(request):
     # try to figure out where they came from
@@ -69,4 +70,7 @@ def view_leads(request):
     all_leads = Lead.objects.order_by('id').reverse()
     total = len(all_leads)
 
-    return render_to_response("dump.html", dict(leads=all_leads, total=total))
+	if request.GET.get("json") == "true":
+		return HttpResponse(json.dumps(all_leads), content_type="application/json")
+	else:
+		return render_to_response("dump.html", dict(leads=all_leads, total=total))
