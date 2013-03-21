@@ -77,3 +77,24 @@ def view_leads(request):
         return HttpResponse(serializers.serialize("json", all_leads), content_type="application/json")
     else:
         return render_to_response("dump.html", dict(leads=all_leads, total=total))
+
+def update_leads(request):
+    if not request.GET.get("pass") == settings.VIEW_LEADS_PASSWORD:
+        return HttpResponse("that is private", status=403)
+
+    if request.GET.get("email"):
+        leads = Lead.objects.filter(email=request.GET.get("email"))
+    else:
+        leads = Lead.objects.order_by('id').reverse()
+        
+    for lead in leads:
+        referrer = lead.referrer
+        mailsnake.listSubscribe(
+            id=list_num,
+            email_address=email,
+            merge_vars={
+                'referrer': referrer
+                },
+            update_existing=True,
+        )
+        
