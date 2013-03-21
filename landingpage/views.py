@@ -70,7 +70,7 @@ def view_leads(request):
     all_leads = Lead.objects.order_by('id').reverse()
     total = len(all_leads)
 
-	if request.GET.get("json") == "true":
-		return HttpResponse(json.dumps(all_leads), content_type="application/json")
-	else:
-		return render_to_response("dump.html", dict(leads=all_leads, total=total))
+    if request.GET.get("json") == "true":
+        return HttpResponse(json.dumps(all_leads), content_type="application/json")
+    else:
+        return render_to_response("dump.html", dict(leads=all_leads, total=total))
