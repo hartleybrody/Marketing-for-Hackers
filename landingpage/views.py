@@ -93,6 +93,7 @@ def update_leads(request):
     mailsnake = MailSnake(key)
         
     for lead in leads:
+        email = lead.email
         referrer = lead.referrer
         mailsnake.listSubscribe(
             id=list_num,
