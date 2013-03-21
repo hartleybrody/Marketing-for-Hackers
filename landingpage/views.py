@@ -37,11 +37,11 @@ def submit(request):
         mailsnake.listSubscribe(
             id=list_num,
             email_address=email,
-            marge_vars={
-                'MERGE1': referrer
-                },
             double_optin=False,
-            send_welcome=True
+            send_welcome=True,
+            merge_vars={
+                'referrer': referrer
+                }
         )
     except:
         pass
