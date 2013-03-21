@@ -37,7 +37,9 @@ def submit(request):
         mailsnake.listSubscribe(
             id=list_num,
             email_address=email,
-            marge_vars=dict(REFERRER=referrer),
+            marge_vars={
+                'MERGE1': referrer
+                },
             double_optin=False,
             send_welcome=True
         )
