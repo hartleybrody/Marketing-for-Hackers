@@ -91,16 +91,24 @@ def update_leads(request):
     list_num = settings.MAILCHIMP_LIST_NUM
     
     mailsnake = MailSnake(key)
+    exceptions = []
         
     for lead in leads:
         email = lead.email
         referrer = lead.referrer
-        mailsnake.listSubscribe(
-            id=list_num,
-            email_address=email,
-            merge_vars={
-                'referrer': referrer
-                },
-            update_existing=True,
-        )
+        try:
+            mailsnake.listSubscribe(
+                id=list_num,
+                email_address=email,
+                merge_vars={
+                    'referrer': referrer
+                    },
+                update_existing=True,
+            )
+        except Exception as e:
+            exceptions.append(e)
         
+    if exceptions:
+        return HttpResponse(exceptions)
+    else:
+        return HttpResponse("success")
