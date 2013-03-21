@@ -87,6 +87,11 @@ def update_leads(request):
     else:
         leads = Lead.objects.order_by('id').reverse()
         
+    key = settings.MAILCHIMP_API_KEY
+    list_num = settings.MAILCHIMP_LIST_NUM
+    
+    mailsnake = MailSnake(key)
+        
     for lead in leads:
         referrer = lead.referrer
         mailsnake.listSubscribe(
