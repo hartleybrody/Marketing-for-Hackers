@@ -37,6 +37,7 @@ def submit(request):
         mailsnake.listSubscribe(
             id=list_num,
             email_address=email,
+            marge_vars=dict(REFERRER=clean_referrer(referrer)),
             double_optin=False,
             send_welcome=True
         )
@@ -63,7 +64,6 @@ def author(request):
 
     return render_to_response("author.html", author_info)
 
-
 def view_leads(request):
     if not request.GET.get("pass") == settings.VIEW_LEADS_PASSWORD:
         return HttpResponse("those are private", status=403)
@@ -75,3 +75,9 @@ def view_leads(request):
         return HttpResponse(serializers.serialize("json", all_leads), content_type="application/json")
     else:
         return render_to_response("dump.html", dict(leads=all_leads, total=total))
+        
+def clean_referrer(url):
+    if "http://t.co/" in url:
+        return "http://www.twitter.com"
+    
+    return url.strip().split("?")[0]
