@@ -1,4 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect
+from django.core import serializers
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.core.urlresolvers import reverse
@@ -71,6 +72,6 @@ def view_leads(request):
     total = len(all_leads)
 
     if request.GET.get("json") == "true":
-        return HttpResponse(json.dumps(all_leads), content_type="application/json")
+        return HttpResponse(serializers.serialize("json", all_leads), content_type="application/json")
     else:
         return render_to_response("dump.html", dict(leads=all_leads, total=total))
