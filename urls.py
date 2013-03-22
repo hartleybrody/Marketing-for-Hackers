@@ -11,7 +11,6 @@ urlpatterns = patterns('landingpage.views',
     url(r'^thanks/', 'thanks'),
     url(r'^author/', 'author'),
     url(r'^view/leads/', 'view_leads'),
-    url(r'^update/leads/', 'update_leads'),
 	(r'^robots\.txt$', direct_to_template, {'template': 'robots.txt', 'mimetype': 'text/plain'}),
 )
 

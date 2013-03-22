@@ -38,7 +38,7 @@ def submit(request):
             id=list_num,
             email_address=email,
             double_optin=False,
-            send_welcome=True,
+            send_welcome=False,
             merge_vars={
                 'referrer': referrer
                 }
@@ -77,38 +77,3 @@ def view_leads(request):
         return HttpResponse(serializers.serialize("json", all_leads), content_type="application/json")
     else:
         return render_to_response("dump.html", dict(leads=all_leads, total=total))
-
-def update_leads(request):
-    if not request.GET.get("pass") == settings.VIEW_LEADS_PASSWORD:
-        return HttpResponse("that is private", status=403)
-
-    if request.GET.get("email"):
-        leads = Lead.objects.filter(email=request.GET.get("email"))
-    else:
-        leads = Lead.objects.order_by('id').reverse()
-        
-    key = settings.MAILCHIMP_API_KEY
-    list_num = settings.MAILCHIMP_LIST_NUM
-    
-    mailsnake = MailSnake(key)
-    exceptions = []
-        
-    for lead in leads:
-        email = lead.email
-        referrer = lead.referrer
-        try:
-            mailsnake.listSubscribe(
-                id=list_num,
-                email_address=email,
-                merge_vars={
-                    'referrer': referrer
-                    },
-                update_existing=True,
-            )
-        except Exception as e:
-            exceptions.append(e)
-        
-    if exceptions:
-        return HttpResponse(exceptions)
-    else:
-        return HttpResponse("success")
