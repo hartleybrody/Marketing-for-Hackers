@@ -8,22 +8,22 @@
         <p>
           <!--<img src="{{ STATIC_URL }}red-arrow.jpg" style="float:left; margin-left:80px"/>-->
           <img src="http://hartleybrody.com/sandbox/red-arrow.jpg" style="float:left; margin-left:80px"/>
-          <form action="/submit/"  method="post" style="display:block; margin:40px 0px 0px 260px">
+          <form action="/submit/"  method="post" style="display:block; margin:40px 0px 0px 260px" class="form-inline">
             {% csrf_token %}
-            <input class="span5" id="email" name="email" type="email" placeholder="email address..." />
+            <input class="span3" id="email" name="email" type="email" placeholder="email address..." />
             <input type="hidden" name="referrer" value="{{ referrer }}" />
             <input type="submit" class="btn btn-primary" value="Go!" /><br>
-			      <div id="mailchimp-chiclet" style="display:inline-block; position:relative; left:20px; top:7px;">
-				      <script type="text/javascript" language="JavaScript" src="http://hartleybrody.us2.list-manage.com/subscriber-count?b=31&u=e03582ad-8aa8-4dbb-8823-ab665cf96753&id=a00eb63f4e"></script>
-			      </div>
             <em style="opacity:0.4; font-size:0.85em;">You'll be emailed a link to download the .pdf</em>
+            <div id="mailchimp-chiclet" style="display:inline-block; position:relative; left:20px; top:7px;">
+              <script type="text/javascript" language="JavaScript" src="http://hartleybrody.us2.list-manage.com/subscriber-count?b=31&u=e03582ad-8aa8-4dbb-8823-ab665cf96753&id=a00eb63f4e"></script>
+            </div>
           </form> 
         </p>
         
       </div>
 
       <!-- sub calls to action -->
-      <div class="row">
+      <div class="row-fluid">
         <div class="span4">
           <h2>Quick & Easy</h2>
           <p><strong>You have a life, and a job. It would be cool if this side project really takes off, but you're not sure if you want to sink a lot of time into it yet.</strong></p>
