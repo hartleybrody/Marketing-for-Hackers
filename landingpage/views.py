@@ -24,8 +24,8 @@ def submit(request):
     referrer = request.POST['referrer']
 
     # save locally
-    lead_to_submit = Lead(email=email, referrer=referrer)
-    lead_to_submit.save()
+    # lead_to_submit = Lead(email=email, referrer=referrer)
+    # lead_to_submit.save()
 
     # send to Mailchimp
     key = settings.MAILCHIMP_API_KEY
